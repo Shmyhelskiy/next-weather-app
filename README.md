@@ -16,4 +16,4 @@ This project is a weather application built to display real-time weather data. I
 
 ## Links
 - **Code Repository:** [GitHub](https://github.com/Shmyhelskiy/next-weather-app)
-- **Live Preview:** 
+- **Live Preview:** [Vercel] (https://next-weather-app-murex.vercel.app)

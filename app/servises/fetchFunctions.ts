@@ -1,6 +1,9 @@
 export async function getWeather(query: string) {
+  
+  const apiKey = process.env.API_KEY;
+
   try {
-    const resCoord = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${process.env.API_KEY}`);
+    const resCoord = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${apiKey}`);
     
     if (!resCoord.ok) {
       throw new Error(`Failed to get coordinates for query: ${query}. Status: ${resCoord.status}`);
