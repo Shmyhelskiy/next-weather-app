@@ -1,11 +1,7 @@
 export async function getWeather(query: string) {
   
-  const apiKey = process.env.API_KEY;
-
-  if (!apiKey) {
-    throw new Error('API_KEY не встановлений!');
-  }
-
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  
   try {
     const resCoord = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${apiKey}`);
     
