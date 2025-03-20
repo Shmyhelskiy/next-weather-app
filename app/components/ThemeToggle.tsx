@@ -9,8 +9,6 @@ const ThemeToggle = () => {
   const [darkMode, setDarkMode] = useState(false);
   const setTheme = useThemeStore((state) => state.setTheme);
 
-  console.log(process.env.NEXT_PUBLIC_API_KEY)
-
   useEffect(() => {
     const theme = localStorage.getItem('theme');
 
