@@ -47,6 +47,7 @@ body {
       background-color: transparent !important;
       -webkit-box-shadow: 0 0 0px 1000px theme('colors.customSkyBlue') inset;
       -webkit-text-fill-color: theme('colors.customBlue') !important;
+      border: none !important;
     }
   }
 
@@ -54,6 +55,7 @@ body {
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px theme('colors.customBlue') inset;
       -webkit-text-fill-color: white !important;
+      border: none !important;
     }
   }
 }

@@ -10,8 +10,6 @@ import RequestError from "../errors/RequestError";
 const WeatherOverview = () => {
   const isLoading = useLoaderStore((state) => state.isLoading)
   const errorText = useErrorStore((state) => state.errorText)
-  console.log(isLoading);
-  
 
   return (
     <section className="mt-10 flex flex-col items-center sm:items-start xl:flex-row gap-5 text-xl xl:text-2xl">
