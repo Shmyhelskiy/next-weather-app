@@ -10,7 +10,7 @@ const CurrentWeather = () => {
   const weather = useWeatherStore((state) => state.weather.current);
 
   return (
-    <aside className="weather-container w-96">
+    <aside className="weather-container w-80 sm:w-96">
       <h2>Today&apos;s weather</h2>
       <div className="weather-card"> 
         <WeatherLocation />

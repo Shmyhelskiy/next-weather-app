@@ -1,7 +1,7 @@
 import { Area, AreaChart, CartesianGrid, Label, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { NormalizedWeatherData } from "../../types";
 import { FC } from "react";
-import CustomTick from "../customTick/CustomTick";
+import CustomTick from "./CustomTick";
 import { getDayOfWeek, getTimeOfDay } from "@/app/servises/getWeather";
 
 type Props = {
@@ -20,17 +20,18 @@ const WeatherChart: FC<Props> = ({ data, color}) => {
           </linearGradient>
         </defs>
         <CartesianGrid horizontal={false} stroke={color}/>
-        <XAxis dataKey="date" tick={<CustomTick color={color}/>} stroke={color}/>
+        <XAxis dataKey="date" tick={<CustomTick/>} stroke={color}/>
         <YAxis stroke={color}>
           <Label value="°C" offset={0} position="insideTopLeft" dx={-20} dy={-10} stroke={color}/>
         </YAxis>
-        <Tooltip  
+        <Tooltip
           formatter={(value, name, props) => {
             const day = getDayOfWeek(props?.payload?.date);
             const time = getTimeOfDay(props?.payload?.date)
 
             return [`${day} ${time}:  ${value}°C`,]
           }}
+          labelFormatter={() => ''}
         />
         <Area
           type="monotone"

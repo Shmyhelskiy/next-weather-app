@@ -1,9 +1,9 @@
 'use client'
 import useWeatherStore from "@/app/store/weatherStore";
 import WeatherChart from "../charts/WeatherChart";
-import WeatherLocation from "./WeatherLocation";
 import { processWeatherData } from "@/app/servises/getWeather";
 import useThemeStore from "@/app/store/themeStore";
+import WeatherLocation from "./WeatherLocation";
 
 const ForecastWeather = () => {
   const weather = useWeatherStore((state) => state.weather.forecast);
@@ -11,7 +11,7 @@ const ForecastWeather = () => {
   
   return (
     <>
-      <section className="weather-container w-4xl">
+      <section className="weather-container w-full lg:w-4xl">
         <h2>Temperature Forecast in 5 days</h2>
         <div className="weather-card">
           <WeatherLocation />

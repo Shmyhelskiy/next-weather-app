@@ -2,35 +2,38 @@
 import { useState, useEffect } from "react";
 import { FaMoon } from 'react-icons/fa';
 import { BsSunFill } from 'react-icons/bs';
-import useThemeStore from "../store/themeStore";
+import useThemeStore from "@/app/store/themeStore";
+
 
 
 const ThemeToggle = () => {
   const [darkMode, setDarkMode] = useState(false);
   const setTheme = useThemeStore((state) => state.setTheme);
 
+  const applyTheme = (isDark: boolean) => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      localStorage.setItem('theme', 'dark');
+      setTheme(true);
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setTheme(false);
+    }
+  };
+
   useEffect(() => {
     const theme = localStorage.getItem('theme');
-
-    if ( theme === "dark") {
-      setDarkMode(true);
-      setTheme(true)
-    }
+    const isDark = theme === 'dark';
+    setDarkMode(isDark);
+    applyTheme(isDark);
   }, []);
 
   useEffect(() => {
-    if (darkMode) {
-      setTheme(true)
-      document.documentElement.classList.remove('light')
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      setTheme(false)
-      document.documentElement.classList.remove('dark')
-      document.documentElement.classList.add('light')
-      localStorage.setItem('theme', 'light')
-    }
-  },[darkMode])
+    applyTheme(darkMode);
+  }, [darkMode]);
 
   return (
     <div 

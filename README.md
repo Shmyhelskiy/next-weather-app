@@ -1,7 +1,7 @@
 # Weather App
 
 ## Project Overview
-This project is a weather application built to display real-time weather data. It allows users to search for cities and view detailed weather information such as temperature, humidity, and forecasts.
+This project is a weather application created to display real-time weather data. It allows users to search for cities and view detailed weather information. This application uses Zustand as a store for rendering Recharts gifs. The weather data is taken from openweathermap.
 
 ## Technologies Used
 - **Next.js**

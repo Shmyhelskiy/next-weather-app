@@ -2,15 +2,16 @@
 import Form from 'next/form'
 import { useState } from 'react';
 import { FaSearch } from "react-icons/fa"
-import { FullWeatherResponse } from '../types';
-import useStore from '../store/weatherStore';
-import useLoaderStore from '../store/loaderStore';
-import useErrorStore from '../store/errorStore';
+import { FullWeatherResponse } from '../../types';
+import useLoaderStore from '@/app/store/loaderStore';
+import useErrorStore from '@/app/store/errorStore';
+import useWeatherStore from '@/app/store/weatherStore';
+
 
 
 const SearchInput = () => {
   const [query, setQuery] = useState('');
-  const setWeather = useStore((state) => state.setWeather);
+  const setWeather = useWeatherStore((state) => state.setWeather);
 
   const setLoading = useLoaderStore((state) => state.setLoading);
   const setErrorText = useErrorStore((state) => state.setErrorText);
@@ -64,7 +65,7 @@ const SearchInput = () => {
   return (
     <Form  
     action="/search"
-    className="flex items-center dark:bg-customBlue bg-customSkyBlue bg-opacity-50 rounded-full border-2 border-customBlue dark:border-white py-4"
+    className="min-w-[320px] max-w-5xl w-full flex justify-between dark:bg-customBlue bg-customSkyBlue bg-opacity-50 rounded-full border-2 border-customBlue dark:border-white py-0 sm:py-4"
     onSubmit={handleSubmit}
     >
       <input 
@@ -77,7 +78,7 @@ const SearchInput = () => {
 
       />
       <button type="submit">
-      <FaSearch className="mr-4 cursor-pointer" size={20} />
+      <FaSearch className="sm:mr-4 cursor-pointer" size={20} />
       </button>
     </Form >
   )

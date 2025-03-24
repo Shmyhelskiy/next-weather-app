@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
 interface LoaderStore {
-  isLoading: boolean ;
-  setLoading: (value: boolean) => void;
+  isLoading: boolean | null ;
+  setLoading: (value: boolean | null) => void;
 }
 
 const useLoaderStore = create<LoaderStore>((set) => ({
-  isLoading: false,
+  isLoading: null,
   setLoading: (value) => set({ isLoading: value }),
 }));
 

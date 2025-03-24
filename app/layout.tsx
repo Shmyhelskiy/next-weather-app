@@ -1,5 +1,6 @@
-import Navbar from "./components/Navbar";
+import Navbar from "./components/ui/Navbar";
 import "./globals.css";
+import { getInitialThemeScript } from "./utils/getThemeScript";
 
 export default function RootLayout({
   children,
@@ -7,7 +8,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light">
+    <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: getInitialThemeScript() }} />
+      </head>
       <body>
         <Navbar />
         {children}
