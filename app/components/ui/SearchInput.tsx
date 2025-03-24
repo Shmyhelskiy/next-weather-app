@@ -65,7 +65,7 @@ const SearchInput = () => {
   return (
     <Form  
     action="/search"
-    className="min-w-[320px] max-w-5xl w-full flex justify-between dark:bg-customBlue bg-customSkyBlue bg-opacity-50 rounded-full border-2 border-customBlue dark:border-white py-0 sm:py-4"
+    className="relative min-w-[320px] max-w-5xl w-full"
     onSubmit={handleSubmit}
     >
       <input 
@@ -74,11 +74,13 @@ const SearchInput = () => {
         value={query}
         maxLength={70}
         onChange={handleQuery}
-        className='dark:bg-customBlue bg-customSkyBlue rounded-full p-4 h-12 w-3xl text-2xl focus:outline-none input-autofill'
-
+        className="w-full dark:bg-customBlue bg-customSkyBlue bg-opacity-50 rounded-full border-2 border-customBlue dark:border-white py-4 px-6 text-2xl focus:outline-none input-autofill"
       />
-      <button type="submit">
-      <FaSearch className="sm:mr-4 cursor-pointer" size={20} />
+      <button 
+        type="submit" 
+        className='absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer'
+      >
+        <FaSearch size={20} />
       </button>
     </Form >
   )
