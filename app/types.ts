@@ -35,7 +35,7 @@ interface WeatherCoord {
   lon: number;
 }
 
-interface Weather {
+export interface CurrentWeather {
   base: string;
   clouds: WeatherClouds;
   cod: number;
@@ -110,7 +110,7 @@ export interface WeatherForecast {
 }
 
 export interface FullWeatherResponse {
-  current: Weather;
+  current: CurrentWeather;
   forecast: WeatherForecast;
 }
 

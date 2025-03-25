@@ -1,12 +1,16 @@
 'use client'
-import useWeatherStore from "@/app/store/weatherStore";
 import WeatherChart from "../charts/WeatherChart";
 import { processWeatherData } from "@/app/servises/getWeather";
 import useThemeStore from "@/app/store/themeStore";
 import WeatherLocation from "./WeatherLocation";
+import { FC } from "react";
+import { WeatherForecast as WeatherForecastType } from "@/app/types";
 
-const ForecastWeather = () => {
-  const weather = useWeatherStore((state) => state.weather.forecast);
+type Props = {
+  forecast:  WeatherForecastType;
+}
+
+const ForecastWeather: FC<Props> = ({forecast}) => {
   const darkTheme = useThemeStore((state) => state.darkTheme);
   
   return (
@@ -15,9 +19,7 @@ const ForecastWeather = () => {
         <h2>Temperature Forecast in 5 days</h2>
         <div className="weather-card">
           <WeatherLocation />
-          {weather.list &&  
-            <WeatherChart data={processWeatherData(weather)} color={darkTheme ? '#fff' : '#000'}/>
-          }
+          <WeatherChart data={processWeatherData(forecast)} color={darkTheme ? '#fff' : '#000'}/>
         </div>
       </section>
     </>
