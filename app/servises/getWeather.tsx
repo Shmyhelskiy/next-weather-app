@@ -7,7 +7,7 @@ export const getWeatherIcon = (iconCode: string): string => {
 
 // функція переводу кельвін у цельсії
 export const convertTemperature = (temp: number) => {
-  return (temp - 273.15).toFixed(2);
+  return (temp - 273.15).toFixed(1);
 }
 
 // функція нормалізація данни, стовреня масиву обєктів з темпетурою та датою
@@ -68,3 +68,8 @@ export const processWeatherData = (data: WeatherForecast) => {
 
   return processedData;
 };
+
+// функція петеворення тиску в систему числення в мм
+export const normilizedPressure = (pressure: number): number => {
+  return Math.ceil(pressure * 0.75006)
+}

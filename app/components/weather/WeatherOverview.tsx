@@ -22,7 +22,7 @@ const WeatherOverview = () => {
   }
   
   return (
-    <section className="mt-10 flex flex-col items-center sm:items-start xl:flex-row gap-14 text-xl xl:text-2xl">
+    <section className="mt-10 flex flex-col items-center sm:items-start xl:flex-row gap-14 lg:gap-0 text-xl xl:text-2xl">
       {
         errorText ? (
           <RequestError text={errorText} />

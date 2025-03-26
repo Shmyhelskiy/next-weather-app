@@ -15,7 +15,7 @@ const ForecastWeather: FC<Props> = ({forecast}) => {
   
   return (
     <>
-      <section className="weather-container w-full lg:w-4xl">
+      <section className="weather-container w-80 sm:w-96 md:w-xl lg:w-2xl xl:w-4xl mt-96 lg:mt-0 lg:ml-100 xl:ml-15 ">
         <h2>Temperature Forecast in 5 days</h2>
         <div className="weather-card">
           <WeatherLocation />

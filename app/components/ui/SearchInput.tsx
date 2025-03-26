@@ -1,20 +1,38 @@
 'use client'
 import Form from 'next/form'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaSearch } from "react-icons/fa"
 import { FullWeatherResponse } from '../../types';
 import useLoaderStore from '@/app/store/loaderStore';
 import useErrorStore from '@/app/store/errorStore';
 import useWeatherStore from '@/app/store/weatherStore';
+import { autocomplite } from '@/app/lib/google';
+import { PlaceAutocompleteResult } from '@googlemaps/google-maps-services-js';
+import { filterGoogleData } from '@/app/servises/googleDataFilter';
 
 
 
 const SearchInput = () => {
   const [query, setQuery] = useState('');
-  const setWeather = useWeatherStore((state) => state.setWeather);
+  const [predictions, setPredictions] = useState<PlaceAutocompleteResult[]>([]);
 
+  const setWeather = useWeatherStore((state) => state.setWeather);
   const setLoading = useLoaderStore((state) => state.setLoading);
   const setErrorText = useErrorStore((state) => state.setErrorText);
+
+  useEffect(() => {
+    const fetchPredictions = async () => {
+      const predictions = await autocomplite(query);
+      if (predictions) {
+        const filtredPredictions = filterGoogleData(predictions);
+        setPredictions(filtredPredictions)
+      } else {
+        setPredictions([])
+      }
+    };
+    
+    fetchPredictions();
+  }, [query])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +61,7 @@ const SearchInput = () => {
       
       setWeather(data)
       setLoading(false)
+      setPredictions([]);
       return data;
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -58,9 +77,14 @@ const SearchInput = () => {
     }
   };
 
-  function handleQuery(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
   }
+
+  const handleSelectPrediction = (description: string) => {
+    setQuery(description);
+    setPredictions([]);
+  };
 
   return (
     <Form  
@@ -82,6 +106,20 @@ const SearchInput = () => {
       >
         <FaSearch size={20} />
       </button>
+
+      {predictions.length > 0 && (
+      <ul className="absolute top-full left-0 w-full dark:bg-customBlue bg-customSkyBlue rounded-xl shadow-xl z-10 max-h-60 overflow-auto">
+        {predictions.map((item) => (
+          <li
+            key={item.place_id}
+            className="p-1 dark:hover:bg-blue-950 hover:bg-sky-500 cursor-pointer text-sm"
+            onClick={() => handleSelectPrediction(item.description)}
+          >
+            {item.description}
+          </li>
+        ))}
+    </ul>
+  )}
     </Form >
   )
 }

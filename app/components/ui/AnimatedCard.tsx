@@ -13,7 +13,7 @@ type Props = {
 const AnimatedCard: FC<Props> = ({ flipped, currentWeather, flip }) => {
   return (
     <motion.div
-      className="rounded-xl [transform-style:preserve-3d] relative xl:w-[352px]"
+      className="rounded-xl [transform-style:preserve-3d] relative w-[352px] ml-10 sm:ml-0"
       animate={{ rotateY: flipped ? 180 : 0 }}
       transition={{ duration: 0.6 }}
     >
