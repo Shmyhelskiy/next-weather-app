@@ -2,6 +2,7 @@
 import { getDayOfWeek } from "@/app/servises/getWeather";
 
 
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomTick = ({ x, y, payload}: any) => {
   const [date] = payload.value.split(' ');

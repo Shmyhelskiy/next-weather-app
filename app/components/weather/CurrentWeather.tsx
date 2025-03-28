@@ -29,8 +29,8 @@ const CurrentWeather: FC<Props> = ({current, onFlip}) => {
             </div>
         </div>
       </div>
-      <div className="absolute bottom-3 right-3">
-        <CustomButton text='details' action={onFlip}/>
+      <div className="absolute bottom-3 right-5">
+        <CustomButton text='Details' action={onFlip}/>
       </div>
     </aside>
   )

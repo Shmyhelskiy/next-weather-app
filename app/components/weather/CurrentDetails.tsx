@@ -48,7 +48,7 @@ const CurrentDetails: FC<Props> = ({current, onFlip}) => {
           </ul>
         </div>
       </div>
-      <div className="absolute bottom-3 right-3">
+      <div className="absolute bottom-3 right-5">
         <CustomButton text='Back' action={onFlip}/>
       </div>
     </aside>

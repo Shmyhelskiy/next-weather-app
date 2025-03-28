@@ -51,7 +51,8 @@ const SearchInput = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: searchQuery }),
       });
-  
+
+
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.message || 'Error fetching weather');

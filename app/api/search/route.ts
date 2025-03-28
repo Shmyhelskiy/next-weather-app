@@ -1,10 +1,10 @@
-import { getWeather } from "@/app/servises/fetchFunctions";
 import { NextResponse } from "next/server";
+import { getWeather } from "@/app/servises/fetchFunctions";
+
 
 export async function POST(req: Request) {
   try {
     const { query } = await req.json();
-
     if (!query) {
       return NextResponse.json({ message: "Query is required" }, { status: 400 });
     }
@@ -17,3 +17,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ message }, { status: 500 });
   }
 }
+

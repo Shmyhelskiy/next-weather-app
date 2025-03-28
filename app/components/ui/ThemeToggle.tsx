@@ -42,13 +42,13 @@ const ThemeToggle = () => {
     > 
     {darkMode ? 
     <>
-    <span className="pr-2">Dark</span>
-    <FaMoon size={23} />
+    <span className="pr-3">Dark</span>
+    <FaMoon size={20} />
     </>
     :
     <>
-    <span className="pr-2">Light</span>
-    <BsSunFill size={23} color="#f5ea41"/>
+    <span className="pr-3">Light</span>
+    <BsSunFill size={20} color="#f5ea41"/>
     </>
     }
     </div>
